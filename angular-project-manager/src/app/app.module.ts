@@ -2,10 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { PaisListComponent } from './auth/pais-list/pais-list.component';
+import { HeaderComponent } from './comoon/header/header.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PaisListComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule
