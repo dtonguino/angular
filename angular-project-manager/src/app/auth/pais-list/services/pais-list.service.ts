@@ -17,7 +17,6 @@ export class PaisListService{
         const headers = new Headers({'Content-Type': 'application/json'});
         const options = new RequestOptions({headers: headers});
         return this._http.get(url,options).map((response) => {
-            console.log(response);
             return response.json();
         });
     }

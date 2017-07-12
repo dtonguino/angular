@@ -1,5 +1,36 @@
-<div *ngIf="isLoading;">
+<div *ngIf="isLoading; else elseBlock">
   <div class="auth-loader-container">
     <app-loader></app-loader>
   </div>
 </div>
+<ng-template #elseBlock>
+  <div class="b-project-list">
+    <h2>Paises</h2>
+    <div class="b-project" *ngFor="let project of paises">
+      <div class="b-project__title-container">
+          <h3 class="b-project__title">{{ project.codigoPais }}</h3>
+      </div>
+      <div class="b-project__description">
+        {{ project.nombre }}
+      </div>
+      <div class="b-project__actions">
+        <a>
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="clearfix"></div>
+
+  <div class="row">
+    <div class="col-md-2 col-md-offset-10 margin-top-sm">
+      <div class="b-btn-new-project overflow-hidden">
+        <button class="btn btn-primary pull-right">
+          Nuevo Proyecto
+        </button>
+      </div>
+    </div>
+  </div>
+
+</ng-template>

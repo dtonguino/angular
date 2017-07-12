@@ -17,6 +17,7 @@ export class PaisListComponent implements OnInit {
     this._paisListService.getAll().subscribe(
       (data: Pais[]) => {
         this.paises=data;
+        this.isLoading=false;
       },
       err => {
         console.error(err);
