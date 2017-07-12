@@ -45,7 +45,7 @@ public class WSPais extends GenericCrud {
     @Path("{id}")
     public void remove(@PathParam("id") String id) {
         try {
-            super.delete(super.findById(id));
+            super.delete(super.findByPK(id, Pais.class));
         } catch (Exception ex) {
             Logger.getLogger(WSPais.class.getName()).log(Level.SEVERE, null, ex);
         }
