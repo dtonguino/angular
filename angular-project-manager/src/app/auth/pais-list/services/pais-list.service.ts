@@ -20,4 +20,14 @@ export class PaisListService{
             return response.json();
         });
     }
+
+    deletePais(pais: Pais){
+    const url = `http://localhost:8084/AngularREST-1.0/webresources/WSPais/${pais.codigoPais}`;
+    const headers = new Headers({'Content-Type': 'application/json'});
+    const options = new RequestOptions({headers: headers});
+    return this._http.delete(url,options).map((response) => {
+            console.log(response)
+            return response.json();
+        });
+  }
 }

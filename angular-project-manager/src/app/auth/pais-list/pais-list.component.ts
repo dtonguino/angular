@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PaisListService } from './services/pais-list.service';
 import { Pais } from './models/pais.model';
+
 @Component({
   selector: 'app-pais-list',
   templateUrl: './pais-list.component.html',
@@ -14,7 +15,11 @@ export class PaisListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._paisListService.getAll().subscribe(
+    this.getAllPaises();
+   
+  }
+  getAllPaises(){
+     this._paisListService.getAll().subscribe(
       (data: Pais[]) => {
         this.paises=data;
         this.isLoading=false;
@@ -27,6 +32,12 @@ export class PaisListComponent implements OnInit {
         
       }
     );
+  }
+  onDeletePais(pais: Pais){
+   this._paisListService.deletePais(pais).subscribe((data) => {
+          console.log(data);
+          this.getAllPaises();
+        });
   }
 
 }
