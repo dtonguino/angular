@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
+import { InputTextModule, ButtonModule, DataTableModule, DialogModule }  from 'primeng/primeng';
+
 import { AppComponent } from './app.component';
 import { PaisListComponent } from './auth/pais-list/pais-list.component';
 import { HeaderComponent } from './comoon/header/header.component';
@@ -18,8 +20,13 @@ import {PaisListService} from './auth/pais-list/services/pais-list.service';
   ],
   imports: [
     BrowserModule,
-    HttpModule
+    DataTableModule,
+    HttpModule,
+    InputTextModule, 
+    DialogModule,
+    ButtonModule
   ],
+  
   providers: [PaisListService],
   bootstrap: [AppComponent]
 })

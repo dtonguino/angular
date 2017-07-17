@@ -6,19 +6,10 @@
 <ng-template #elseBlock>
   <div class="b-project-list">
     <h2>Paises</h2>
-    <div class="b-project" *ngFor="let project of paises">
-      <div class="b-project__title-container">
-          <h3 class="b-project__title">{{ project.codigoPais }}</h3>
-      </div>
-      <div class="b-project__description">
-        {{ project.nombre }}
-      </div>
-      <div class="b-project__actions">
-        <a (click)="onDeletePais(project)">
-          <i class="fa fa-trash" aria-hidden="true"></i>
-        </a>
-      </div>
-    </div>
+    <p-dataTable [value]="paises" [style]="{'width': '800px'}">
+      <p-column field="codigoPais" header="Código" [style]="{'width': '150px'}"></p-column>
+      <p-column field="nombre" header="Nombre"></p-column>
+    </p-dataTable>
   </div>
 
   <div class="clearfix"></div>
