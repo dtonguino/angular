@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.angular.webservices.service;
+package com.angular.services;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
