@@ -4,24 +4,15 @@
   </div>
 </div>
 <ng-template #elseBlock>
+<p-growl [(value)]="msgs"></p-growl>
   <div class="b-project-list">
     <h2>Paises</h2>
-    <p-dataTable [value]="paises" [style]="{'width': '800px'}">
+    <p-dataTable [value]="paises" dataKey="codigoPais" selectionMode="single" [(selection)]="pais" (onRowSelect)="onRowSelect($event)"
+      [style]="{'width': '800px'}">
       <p-column field="codigoPais" header="Código" [style]="{'width': '150px'}"></p-column>
       <p-column field="nombre" header="Nombre"></p-column>
     </p-dataTable>
-  </div>
-
-  <div class="clearfix"></div>
-
-  <div class="row">
-    <div class="col-md-2 col-md-offset-10 margin-top-sm">
-      <div class="b-btn-new-project overflow-hidden">
-        <button class="btn btn-primary pull-right">
-          Nuevo Proyecto
-        </button>
-      </div>
-    </div>    
+    <button pButton type="button" (click)="onCreatePais()" label="Nuevo"></button>
   </div>
 
 </ng-template>
