@@ -12,7 +12,10 @@
       <p-column field="codigoPais" header="Código" [style]="{'width': '150px'}"></p-column>
       <p-column field="nombre" header="Nombre"></p-column>
     </p-dataTable>
-    <button pButton type="button" (click)="onCreatePais()" label="Nuevo"></button>
+    <button pButton type="button" label="Nuevo" (click)="onCreatePais()" icon="fa-plus"></button>
+    <button pButton type="button" label="Modificar" (click)="onUpdatePais()" icon="fa-pencil" [disabled]="!estadoSeleccionado()"></button>
+    <button pButton type="button" label="Eliminar" (click)="onCreatePais()" icon="fa-trash" [disabled]="!estadoSeleccionado()"></button>
+    <button pButton type="button" label="Ver Detalle" (click)="onCreatePais()" icon="fa-search" [disabled]="!estadoSeleccionado()"></button>
   </div>
 
 </ng-template>
