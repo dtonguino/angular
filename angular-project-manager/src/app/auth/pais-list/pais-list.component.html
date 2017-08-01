@@ -4,18 +4,44 @@
   </div>
 </div>
 <ng-template #elseBlock>
-<p-growl [(value)]="msgs"></p-growl>
+  <p-growl [(value)]="msgs"></p-growl>
   <div class="b-project-list">
     <h2>Paises</h2>
-    <p-dataTable [value]="paises" dataKey="codigoPais" selectionMode="single" [(selection)]="pais" (onRowSelect)="onRowSelect($event)"
-      [style]="{'width': '800px'}">
+    <p-dataTable [value]="lista" dataKey="codigoPais" selectionMode="single" [(selection)]="actual" (onRowSelect)="onRowSelect($event)"
+      [style]="{'width': '800px'}" emptyMessage="No se ha encontrado ningún registro">
       <p-column field="codigoPais" header="Código" [style]="{'width': '150px'}"></p-column>
       <p-column field="nombre" header="Nombre"></p-column>
+      <p-footer>{{getMsgRecords()}}</p-footer>
     </p-dataTable>
-    <button pButton type="button" label="Nuevo" (click)="onCreatePais()" icon="fa-plus"></button>
-    <button pButton type="button" label="Modificar" (click)="onUpdatePais()" icon="fa-pencil" [disabled]="!estadoSeleccionado()"></button>
-    <button pButton type="button" label="Eliminar" (click)="onCreatePais()" icon="fa-trash" [disabled]="!estadoSeleccionado()"></button>
-    <button pButton type="button" label="Ver Detalle" (click)="onCreatePais()" icon="fa-search" [disabled]="!estadoSeleccionado()"></button>
+    <p-confirmDialog acceptLabel="Sí" rejectLabel="No" width="425"></p-confirmDialog>
+    <button pButton type="button" label="Nuevo" (click)="onCreate()" icon="fa-plus"></button>
+    <button pButton type="button" label="Modificar" (click)="onUpdate(actual)" icon="fa-pencil" [disabled]="!estadoSeleccionado()"></button>
+    <button pButton type="button" label="Eliminar" (click)="onDelete(actual.codigoPais)" icon="fa-trash" [disabled]="!estadoSeleccionado()"></button>
+    <button pButton type="button" label="Ver Detalle" (click)="onCreate()" icon="fa-search" [disabled]="!estadoSeleccionado()"></button>
   </div>
+
+  <p-dialog header="País" [visible]="enEdicion()">
+    
+      <table cellpadding="5" cellspacing="5">
+        <tr>
+          <th style="width: 80px;"><label for="intCodigo">Código</label>: </th>
+          <td style="width: 420px;"><input type="text" id="intCodigo" ngModel="actual.codigoPais" style="width: 80px;" required></td>
+        </tr>
+        <tr>
+          <th><label for="intNombre">Nombre</label>: </th>
+          <td><input type="text" id="intNombre" ngModel="actual.nombre" style="width: 400px;" required></td>
+        </tr>
+      </table>
+      <table style="width: 100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td align="center">
+            <button pButton type="submit" (click)="onSave()" label="Guardar" class="ui-button-success"></button>
+            <button pButton type="button" (click)="onCancel()" label="Cancelar" class="ui-button-danger"></button>
+          </td>
+        </tr>
+      </table>
+    
+
+  </p-dialog>
 
 </ng-template>

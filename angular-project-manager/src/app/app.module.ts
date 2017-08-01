@@ -1,14 +1,17 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
-import { InputTextModule, ButtonModule, DataTableModule, DialogModule, GrowlModule } from 'primeng/primeng';
+import { InputTextModule, ButtonModule, DataTableModule, DialogModule, GrowlModule, ConfirmDialogModule } from 'primeng/primeng';
+import { ConfirmationService } from 'primeng/primeng';
 
 import { AppComponent } from './app.component';
 import { PaisListComponent } from './auth/pais-list/pais-list.component';
-import { HeaderComponent } from './comoon/header/header.component';
-import { LoaderComponent } from './comoon/loader/loader.component';
+import { HeaderComponent } from './common/header/header.component';
+import { LoaderComponent } from './common/loader/loader.component';
 
+import { HttpService } from 'app/common/services/http.service';
 import { PaisListService } from './auth/pais-list/services/pais-list.service';
 
 @NgModule({
@@ -19,6 +22,7 @@ import { PaisListService } from './auth/pais-list/services/pais-list.service';
     LoaderComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     HttpModule,
     InputTextModule,
@@ -26,9 +30,15 @@ import { PaisListService } from './auth/pais-list/services/pais-list.service';
     DataTableModule,
     DialogModule,
     GrowlModule,
+    ConfirmDialogModule
   ],
-
-  providers: [PaisListService],
-  bootstrap: [AppComponent]
+  providers: [
+    HttpService,
+    ConfirmationService,
+    PaisListService
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

@@ -1,14 +1,14 @@
-import { EnumEstadoRegistro } from '../enumeraciones/estado-registro.enum';
+import { EnumEstadoRegistro } from 'app/enumeraciones/estado-registro.enum';
 
 /**
  * Clase que maneja los estados de los registros.
  */
-export class EstadoBotonesUtil {
+export class EstadoBotones {
     /**
      * El estado actual del registro.
      */
     estado: EnumEstadoRegistro;
-    
+
     /**
      * Constructor por defecto de la clase.
      */
@@ -81,5 +81,12 @@ export class EstadoBotonesUtil {
      */
     public estadoSoloLectura() {
         return EnumEstadoRegistro.SOLO_LECTURA == this.estado;
+    }
+    /**
+     * Indica si el registro est\u00e1 en edición (Nuevo, Modificar) o no.
+     * @return TRUE: si est\u00e1, FALSE: caso contrario
+     */
+    public enEdicion() {
+        return EnumEstadoRegistro.NUEVO == this.estado || EnumEstadoRegistro.MODIFICAR == this.estado;
     }
 }

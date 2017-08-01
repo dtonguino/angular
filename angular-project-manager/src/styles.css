@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+
+table th{
+    text-align: right;
+    vertical-align: bottom;
+}
+
+td { 
+    padding: 2px;
+}
+
+body{
+    background-color: lightgray !important;;
+    font-size: 13.5px !important;
+}
+
+ .ui-datatable .ui-datatable-footer {
+    height: 18px !important;
+    font-size: 12px !important;
+    padding: 0 !important;
+}
