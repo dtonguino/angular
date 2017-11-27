@@ -52,6 +52,17 @@ export class EstadoBotones {
     }
 
     /**
+    * Valida el estado edición (Inicial o Seleccionado).
+    */
+    protected alEstadoEdicion() {
+        if (EnumEstadoRegistro.NUEVO == this.estado) {
+            this.alEstadoInicial();
+        } else {
+            this.alEstadoSeleccionado();
+        }
+    }
+
+    /**
      * Indica si el registro est\u00e1 en estado seleccionado o no.
      * @return TRUE: si est\u00e1, FALSE: caso contrario
      */
@@ -87,6 +98,6 @@ export class EstadoBotones {
      * @return TRUE: si est\u00e1, FALSE: caso contrario
      */
     public enEdicion() {
-        return EnumEstadoRegistro.NUEVO == this.estado || EnumEstadoRegistro.MODIFICAR == this.estado;
+        return EnumEstadoRegistro.NUEVO == this.estado || EnumEstadoRegistro.MODIFICAR == this.estado || EnumEstadoRegistro.SOLO_LECTURA == this.estado;
     }
 }

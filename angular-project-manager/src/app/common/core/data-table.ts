@@ -7,6 +7,7 @@ export class DataTable<T> extends EstadoBotones {
     isLoading = true;
     lista: Array<T>;
     actual: T;
+    respaldo: T;
     msgs: Message[] = [];
 
     constructor(public _servicioCrud: HttpService, public _confirmationService: ConfirmationService, public _url: String, public _token: String) {
@@ -14,7 +15,6 @@ export class DataTable<T> extends EstadoBotones {
     }
 
     onRowSelect(event) {
-        console.log(this.actual);
         super.alEstadoSeleccionado();
     }
 
@@ -33,13 +33,13 @@ export class DataTable<T> extends EstadoBotones {
         );
     }
 
-    onCreate(_registro: T) {
-        console.log(this.actual);
+    onCreate() {
+        this.actual = {} as T;
         super.alEstadoNuevo();
     }
 
-    onUpdate(_registro: T) {
-        console.log(this.actual);
+    onUpdate() {
+        this.respaldo = Object.assign({}, this.actual);
         super.alEstadoModificar();
     }
 
@@ -59,13 +59,21 @@ export class DataTable<T> extends EstadoBotones {
         });
     }
 
+    onDetail() {
+        super.alEstadoSoloLectura();
+    }
+
     onSave() {
-        console.log(this.actual);
-        super.alEstadoInicial();
+        this.getAllRecords();
+        super.alEstadoEdicion();
     }
 
     onCancel() {
-        super.alEstadoInicial();
+        this.actual = Object.assign({}, this.respaldo);
+        //Investigar como actualizar el modelo luego de asignar el respaldo
+        //Temporal getAllRecords()
+        this.getAllRecords();
+        super.alEstadoEdicion();
     }
 
     getMsgRecords() {

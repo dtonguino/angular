@@ -1,3 +1,6 @@
 {
-    "http.proxy": "http://dtonguino:dtonguino1189@192.9.200.3:3128"
+    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+    "window.zoomLevel": 0,
+    "http.proxy": "http://dtonguino:dtonguino1189@192.9.200.3:3128",
+    "http.proxyStrictSSL": false
 }

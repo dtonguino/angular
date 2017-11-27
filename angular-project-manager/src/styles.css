@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+html{
+    font-size: 15px;
+}
 
 table th{
     text-align: right;
@@ -10,11 +13,25 @@ td {
 }
 
 body{
-    background-color: lightgray !important;;
+    background-color: lightgray !important;
     font-size: 13.5px !important;
 }
 
- .ui-datatable .ui-datatable-footer {
+.derecha{
+    width: 100%;
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+    text-align: right;
+}
+
+.ui-inputtext[disabled] {
+    box-shadow: none !important;
+    background-color: lightgray !important;
+    opacity: inherit !important;
+}
+
+.ui-datatable .ui-datatable-footer {
     height: 18px !important;
     font-size: 12px !important;
     padding: 0 !important;
